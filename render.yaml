@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: nongye-baodian-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: QWEATHER_API_KEY
+        sync: false
+      - key: ZHIPU_API_KEY
+        sync: false
+      - key: SILICONFLOW_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: SERVER_TOKEN
+        sync: false
