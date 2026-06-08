@@ -320,7 +320,7 @@ app.get('/api/weather/geo', auth, async (req, res) => {
 });
 
 // ========== 百科数据 ==========
-const encyclopediaData = require('./encyclopedia.json');
+const encyclopediaData = require('../encyclopedia.json');
 
 app.get('/api/encyclopedia', auth, (req, res) => {
   const { category } = req.query;
@@ -336,10 +336,5 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
-  console.log(`🌾 种植宝典后端已启动: http://localhost:${PORT}`);
-  console.log(`   健康检查: http://localhost:${PORT}/health`);
-  console.log(`   视觉识别: POST ${PORT}/api/vision/recognize`);
-  console.log(`   AI 对话: POST ${PORT}/api/ai/chat`);
-  console.log(`   天气: GET ${PORT}/api/weather/now`);
-});
+// Vercel serverless: no listen()
+module.exports = app;
